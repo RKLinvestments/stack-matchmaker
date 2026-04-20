@@ -3,7 +3,7 @@
 Find your AI stack in 2 minutes — the right tools, in the right order, for your role, goals, and budget.
 
 **Live:** [stackmatchmaker.app](https://stackmatchmaker.app)
-**Source:** [github.com/RKLinvestments/ai-match-maker](https://github.com/RKLinvestments/ai-match-maker)
+**Source:** [github.com/RKLinvestments/stack-matchmaker](https://github.com/RKLinvestments/stack-matchmaker)
 
 ---
 
