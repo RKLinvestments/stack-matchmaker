@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { AnalyticsScripts } from "@/components/AnalyticsScripts";
+import { UnlockHandler } from "@/components/UnlockHandler";
 
 const SITE_NAME = "Stack Matchmaker";
 const SITE_DESCRIPTION =
@@ -99,6 +100,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen antialiased">
         <AnalyticsScripts />
+        <UnlockHandler />
         {children}
       </body>
     </html>
