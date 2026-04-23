@@ -133,7 +133,7 @@ export default function Home() {
               {
                 step: "02",
                 title: "Get your stack",
-                body: "We score 35+ AI tools against your situation and pick the right 4–6.",
+                body: "We score 40+ AI tools against your situation and pick the right 4–6.",
               },
               {
                 step: "03",
