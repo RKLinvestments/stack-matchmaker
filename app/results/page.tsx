@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ToolCard } from "@/components/ToolCard";
-import { EmailCapture } from "@/components/EmailCapture";
+import { Gate } from "@/components/Gate";
 import { HelpCard } from "@/components/HelpCard";
 import { ShareBar } from "@/components/ShareBar";
 import { PrintButton } from "@/components/PrintButton";
@@ -85,69 +85,79 @@ export default function ResultsPage({
         </section>
 
         <section className="mx-auto max-w-5xl px-6 py-10">
-          <div className="mb-8 rounded-2xl border border-ink-100 bg-white p-6">
-            <div className="text-xs font-semibold uppercase tracking-widest text-ink-500">
-              Your workflow, in order
-            </div>
-            <ol className="mt-4 grid gap-2 md:grid-cols-2">
-              {stack.workflow.map((w) => {
-                const t = getTool(w.toolId);
-                if (!t) return null;
-                return (
-                  <li key={w.toolId} className="flex items-start gap-3 rounded-xl border border-ink-100 px-4 py-3">
-                    <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full bg-ink-950 text-xs font-bold text-white">
-                      {w.step}
-                    </span>
-                    <div className="min-w-0">
-                      <div className="font-semibold text-ink-900">{t.name}</div>
-                      <div className="text-sm text-ink-600">{w.action}</div>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
-
-          <div className="mb-8">
-            <StackNarrative encoded={a} />
-          </div>
-
-          <div className="space-y-5">
-            {stack.picks.map((p, i) => (
-              <ToolCard key={p.tool.id} pick={p} index={i} />
-            ))}
-          </div>
-
-          {stack.removeFromCurrent.length > 0 && (
-            <div className="mt-10 card">
-              <div className="text-xs font-semibold uppercase tracking-widest text-ink-500">
-                What to drop or replace
+          {stack.picks[0] && (
+            <div className="mb-8">
+              <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-ink-500">
+                Your top pick
               </div>
-              <ul className="mt-3 space-y-2">
-                {stack.removeFromCurrent.map((r) => {
-                  const t = getTool(r.toolId);
-                  if (!t) return null;
-                  return (
-                    <li key={r.toolId} className="flex items-start justify-between gap-4 rounded-xl border border-ink-100 px-4 py-3">
-                      <div>
-                        <div className="font-semibold text-ink-900">{t.name}</div>
-                        <div className="text-sm text-ink-600">{r.why}</div>
-                      </div>
-                      <span className="chip text-brand-700">Drop</span>
-                    </li>
-                  );
-                })}
-              </ul>
+              <ToolCard pick={stack.picks[0]} index={0} />
             </div>
           )}
 
-          <div className="no-print mt-10">
-            <EmailCapture stackId={a} />
-          </div>
+          <Gate
+            stackId={a}
+            preview={`${stack.picks.length} tools picked for ${ROLE_LABEL[answers.role] ?? "you"}. Full stack, workflow order, drop list, and a personalized 7-day rollout plan — one email unlocks it all.`}
+          >
+            <div className="mb-8 rounded-2xl border border-ink-100 bg-white p-6">
+              <div className="text-xs font-semibold uppercase tracking-widest text-ink-500">
+                Your workflow, in order
+              </div>
+              <ol className="mt-4 grid gap-2 md:grid-cols-2">
+                {stack.workflow.map((w) => {
+                  const t = getTool(w.toolId);
+                  if (!t) return null;
+                  return (
+                    <li key={w.toolId} className="flex items-start gap-3 rounded-xl border border-ink-100 px-4 py-3">
+                      <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full bg-ink-950 text-xs font-bold text-white">
+                        {w.step}
+                      </span>
+                      <div className="min-w-0">
+                        <div className="font-semibold text-ink-900">{t.name}</div>
+                        <div className="text-sm text-ink-600">{w.action}</div>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
 
-          <div className="mt-6">
-            <HelpCard />
-          </div>
+            <div className="mb-8">
+              <StackNarrative encoded={a} />
+            </div>
+
+            <div className="space-y-5">
+              {stack.picks.slice(1).map((p, i) => (
+                <ToolCard key={p.tool.id} pick={p} index={i + 1} />
+              ))}
+            </div>
+
+            {stack.removeFromCurrent.length > 0 && (
+              <div className="mt-10 card">
+                <div className="text-xs font-semibold uppercase tracking-widest text-ink-500">
+                  What to drop or replace
+                </div>
+                <ul className="mt-3 space-y-2">
+                  {stack.removeFromCurrent.map((r) => {
+                    const t = getTool(r.toolId);
+                    if (!t) return null;
+                    return (
+                      <li key={r.toolId} className="flex items-start justify-between gap-4 rounded-xl border border-ink-100 px-4 py-3">
+                        <div>
+                          <div className="font-semibold text-ink-900">{t.name}</div>
+                          <div className="text-sm text-ink-600">{r.why}</div>
+                        </div>
+                        <span className="chip text-brand-700">Drop</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+
+            <div className="mt-10">
+              <HelpCard />
+            </div>
+          </Gate>
 
           <div className="mt-10 flex flex-wrap items-center justify-between gap-4 text-sm text-ink-500">
             <Link href="/quiz" className="text-ink-700 underline">
