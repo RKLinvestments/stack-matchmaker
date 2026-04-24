@@ -155,7 +155,7 @@ export default function ResultsPage({
             )}
 
             <div className="mt-10">
-              <HelpCard />
+              <HelpCard quoteBody={buildQuoteBody(stack, answers, a)} />
             </div>
           </Gate>
 
@@ -183,4 +183,34 @@ function budgetLabel(b: string): string {
       premium: "premium",
     } as Record<string, string>
   )[b] ?? b;
+}
+
+function buildQuoteBody(
+  stack: ReturnType<typeof recommend>,
+  answers: ReturnType<typeof decodeAnswers> & {},
+  stackId: string,
+): string {
+  const role = ROLE_LABEL[answers.role] ?? answers.role;
+  const goal = GOAL_LABEL[answers.goal] ?? answers.goal;
+  const budget = budgetLabel(answers.budget);
+  const tools = stack.picks
+    .map((p, i) => `  ${i + 1}. ${p.tool.name} — ${p.tool.tagline}`)
+    .join("\n");
+  const url = `https://stackmatchmaker.app/results?a=${stackId}`;
+  return [
+    "Hi — just finished the Stack Matchmaker quiz, need help setting this up.",
+    "",
+    "My situation:",
+    `  Role: ${role}`,
+    `  Goal: ${goal}`,
+    `  Budget: ${budget}`,
+    "",
+    `My stack (${stack.picks.length} tools, est. $${stack.estMonthly.low}–$${stack.estMonthly.high}/mo):`,
+    tools,
+    "",
+    `Full plan: ${url}`,
+    "",
+    "What I need:",
+    "",
+  ].join("\n");
 }
