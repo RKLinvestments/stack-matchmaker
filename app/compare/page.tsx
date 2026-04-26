@@ -62,29 +62,29 @@ export default function ComparePage({
         <section className="bg-mesh">
           <div className="mx-auto max-w-6xl px-6 pt-12 pb-8">
             <BackLink />
-            <h1 className="mt-4 text-3xl font-semibold tracking-tight text-ink-950 md:text-4xl">
+            <h1 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
               Compare {tools.length} tools side by side
             </h1>
-            <p className="mt-2 text-ink-600">
+            <p className="mt-2 text-muted-foreground">
               Same category. Different tradeoffs. Pick the one that fits.
             </p>
           </div>
         </section>
 
         <section className="mx-auto max-w-6xl px-6 pb-16">
-          <div className="overflow-x-auto rounded-2xl border border-ink-100 bg-white shadow-card">
+          <div className="overflow-x-auto rounded-2xl border border-border bg-card shadow-card">
             <table className="w-full min-w-[640px] border-collapse text-left">
               <thead>
-                <tr className="border-b border-ink-100">
-                  <th className="w-44 p-5 text-xs font-semibold uppercase tracking-wider text-ink-500">
+                <tr className="border-b border-border">
+                  <th className="w-44 p-5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     Tool
                   </th>
                   {tools.map((t) => (
                     <th key={t.id} className="p-5 align-top">
-                      <div className="text-lg font-semibold text-ink-950">
+                      <div className="text-lg font-semibold text-foreground">
                         {t.name}
                       </div>
-                      <div className="mt-1 text-xs text-ink-500">
+                      <div className="mt-1 text-xs text-muted-foreground">
                         {CATEGORY_LABEL[t.category] ?? t.category}
                       </div>
                       <TrackedLink
@@ -107,14 +107,14 @@ export default function ComparePage({
               <tbody className="text-sm">
                 <Row label="Best for">
                   {tools.map((t) => (
-                    <td key={t.id} className="p-5 align-top text-ink-800">
+                    <td key={t.id} className="p-5 align-top text-foreground">
                       {t.killerUseCase}
                     </td>
                   ))}
                 </Row>
                 <Row label="Tagline">
                   {tools.map((t) => (
-                    <td key={t.id} className="p-5 align-top text-ink-700">
+                    <td key={t.id} className="p-5 align-top text-muted-foreground">
                       {t.tagline}
                     </td>
                   ))}
@@ -134,7 +134,7 @@ export default function ComparePage({
                 </Row>
                 <Row label="Setup">
                   {tools.map((t) => (
-                    <td key={t.id} className="p-5 align-top text-ink-800">
+                    <td key={t.id} className="p-5 align-top text-foreground">
                       {SKILL_LABEL[t.setup] ?? t.setup}
                     </td>
                   ))}
@@ -156,7 +156,7 @@ export default function ComparePage({
                 </Row>
                 <Row label="Built for">
                   {tools.map((t) => (
-                    <td key={t.id} className="p-5 align-top text-xs text-ink-700">
+                    <td key={t.id} className="p-5 align-top text-xs text-muted-foreground">
                       {t.audiences.slice(0, 4).join(", ")}
                       {t.audiences.length > 4 ? "…" : ""}
                     </td>
@@ -166,8 +166,8 @@ export default function ComparePage({
             </table>
           </div>
 
-          <div className="mt-8 text-center text-sm text-ink-500">
-            <Link href="/quiz" className="text-ink-700 underline">
+          <div className="mt-8 text-center text-sm text-muted-foreground">
+            <Link href="/quiz" className="text-foreground underline">
               Take the quiz
             </Link>{" "}
             for a stack tuned to your situation.
@@ -187,8 +187,8 @@ function Row({
   children: React.ReactNode;
 }) {
   return (
-    <tr className="border-b border-ink-100 last:border-0">
-      <th className="bg-ink-50/50 p-5 align-top text-xs font-semibold uppercase tracking-wider text-ink-500">
+    <tr className="border-b border-border last:border-0">
+      <th className="bg-muted/50 p-5 align-top text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         {label}
       </th>
       {children}
@@ -201,13 +201,13 @@ function ScoreCell({ value }: { value: number }) {
   return (
     <td className="p-5 align-top">
       <div className="flex items-center gap-2">
-        <div className="h-1.5 w-20 overflow-hidden rounded-full bg-ink-100">
+        <div className="h-1.5 w-20 overflow-hidden rounded-full bg-secondary">
           <div
-            className="h-full rounded-full bg-ink-950"
+            className="h-full rounded-full bg-primary"
             style={{ width: `${pct}%` }}
           />
         </div>
-        <span className="text-sm font-semibold tabular-nums text-ink-900">
+        <span className="text-sm font-semibold tabular-nums text-foreground">
           {value.toFixed(1)}
         </span>
       </div>

@@ -18,16 +18,16 @@ export default function TermsPage() {
       <main>
         <section className="bg-mesh">
           <div className="mx-auto max-w-3xl px-6 pt-14 pb-8">
-            <div className="chip mb-4 !bg-white">Legal</div>
-            <h1 className="text-4xl font-semibold tracking-tight text-ink-950 md:text-5xl">
+            <div className="chip mb-4">Legal</div>
+            <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
               Terms of Service
             </h1>
-            <p className="mt-3 text-ink-600">Last updated {LAST_UPDATED}.</p>
+            <p className="mt-3 text-muted-foreground">Last updated {LAST_UPDATED}.</p>
           </div>
         </section>
 
         <section className="mx-auto max-w-3xl px-6 pb-20">
-          <div className="space-y-8 text-ink-800">
+          <div className="space-y-8 text-foreground">
             <Block title="The short version">
               <p>
                 Stack Matchmaker is a free tool that recommends AI products
@@ -164,7 +164,7 @@ export default function TermsPage() {
                 Questions? Email{" "}
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="font-medium text-ink-900 underline"
+                  className="font-medium text-foreground underline"
                 >
                   {CONTACT_EMAIL}
                 </a>
@@ -172,7 +172,7 @@ export default function TermsPage() {
               </p>
             </Block>
 
-            <div className="pt-6 text-sm text-ink-500">
+            <div className="pt-6 text-sm text-muted-foreground">
               <Link href="/privacy" className="underline">
                 Privacy Policy
               </Link>{" "}
@@ -196,7 +196,7 @@ export default function TermsPage() {
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-xl font-semibold tracking-tight text-ink-950">
+      <h2 className="text-xl font-semibold tracking-tight text-foreground">
         {title}
       </h2>
       <div className="mt-3 space-y-3 leading-relaxed">{children}</div>

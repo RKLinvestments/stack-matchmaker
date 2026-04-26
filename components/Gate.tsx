@@ -80,16 +80,16 @@ function GateForm({
   }
 
   return (
-    <div className="card relative overflow-hidden bg-ink-950 text-white">
-      <div className="pointer-events-none absolute inset-x-0 -top-10 h-40 bg-gradient-to-b from-brand-500/30 to-transparent blur-3xl" />
+    <div className="card relative overflow-hidden bg-secondary text-foreground">
+      <div className="pointer-events-none absolute inset-x-0 -top-10 h-40 bg-gradient-to-b from-primary/30 to-transparent blur-3xl" />
       <div className="relative">
-        <div className="text-xs font-semibold uppercase tracking-widest text-brand-300">
+        <div className="text-xs font-semibold uppercase tracking-widest text-primary">
           Unlock your full plan
         </div>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
           See the full stack, the rollout order, and your 7-day setup plan.
         </h2>
-        <p className="mt-3 max-w-xl text-ink-200">{preview}</p>
+        <p className="mt-3 max-w-xl text-muted-foreground">{preview}</p>
         <form onSubmit={submit} className="mt-6 flex w-full flex-col gap-2 sm:flex-row">
           <input
             type="email"
@@ -97,18 +97,18 @@ function GateForm({
             placeholder="you@work.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-full bg-white/10 px-5 py-3 text-white placeholder:text-ink-300 focus:bg-white/15 focus:outline-none sm:max-w-xs"
+            className="w-full rounded-full border border-border bg-input px-5 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring sm:max-w-xs"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="rounded-full bg-brand-500 px-6 py-3 font-medium text-white hover:bg-brand-600 disabled:opacity-50"
+            className="rounded-full bg-primary px-6 py-3 font-medium text-white hover:bg-primary/90 disabled:opacity-50"
           >
             {status === "loading" ? "Unlocking…" : "Unlock my plan →"}
           </button>
         </form>
         {msg && <div className="mt-3 text-sm text-red-300">{msg}</div>}
-        <p className="mt-4 text-xs text-ink-300">
+        <p className="mt-4 text-xs text-muted-foreground">
           One email. No spam. Unsubscribe any time.
         </p>
       </div>

@@ -183,26 +183,26 @@ export function Quiz() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <div className="mb-8">
-        <div className="flex items-center justify-between text-xs text-ink-500">
+        <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span>
             Step {stepIdx + 1} of {total}
           </span>
           <span>{pct}%</span>
         </div>
-        <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-ink-100">
+        <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-secondary">
           <div
-            className="h-full rounded-full bg-brand-500 transition-all duration-300"
+            className="h-full rounded-full bg-primary transition-all duration-300"
             style={{ width: `${pct}%` }}
           />
         </div>
       </div>
 
       <div key={step} className="animate-fadeUp">
-        <h2 className="text-3xl font-semibold tracking-tight text-ink-950">
+        <h2 className="text-3xl font-semibold tracking-tight text-foreground">
           {STEP_TITLES[step].title}
         </h2>
         {STEP_TITLES[step].sub && (
-          <p className="mt-2 text-ink-600">{STEP_TITLES[step].sub}</p>
+          <p className="mt-2 text-muted-foreground">{STEP_TITLES[step].sub}</p>
         )}
 
         <div className="mt-8">
@@ -266,8 +266,8 @@ export function Quiz() {
                       onClick={() => toggleTool(t.id)}
                       className={`rounded-xl border px-3 py-2.5 text-left text-sm font-medium transition ${
                         on
-                          ? "border-ink-950 bg-ink-950 text-white"
-                          : "border-ink-200 bg-white text-ink-800 hover:border-ink-300"
+                          ? "border-primary bg-primary text-white"
+                          : "border-border bg-card text-foreground hover:border-primary/50"
                       }`}
                     >
                       {t.label}
@@ -275,7 +275,7 @@ export function Quiz() {
                   );
                 })}
               </div>
-              <p className="mt-4 text-sm text-ink-500">
+              <p className="mt-4 text-sm text-muted-foreground">
                 None of these? Skip — we'll start from scratch.
               </p>
             </div>
@@ -286,7 +286,7 @@ export function Quiz() {
           <button
             onClick={back}
             disabled={stepIdx === 0}
-            className="text-sm text-ink-500 hover:text-ink-900 disabled:opacity-30"
+            className="text-sm text-muted-foreground hover:text-foreground disabled:opacity-30"
           >
             ← Back
           </button>
@@ -299,7 +299,7 @@ export function Quiz() {
               {submitting ? "Building your stack…" : "Get my stack →"}
             </button>
           ) : (
-            <span className="text-sm text-ink-400">Pick one to continue</span>
+            <span className="text-sm text-muted-foreground">Pick one to continue</span>
           )}
         </div>
       </div>
@@ -330,26 +330,26 @@ function OptionGrid<T extends string>({
             onClick={() => onChange(o.value)}
             className={`group rounded-2xl border p-4 text-left transition ${
               on
-                ? "border-ink-950 bg-ink-950 text-white shadow-pop"
-                : "border-ink-200 bg-white hover:border-ink-300 hover:shadow-card"
+                ? "border-primary bg-primary text-white shadow-pop"
+                : "border-border bg-card text-foreground hover:border-primary/50 hover:shadow-card"
             }`}
           >
             <div className="flex items-center justify-between">
               <span className="font-semibold">{o.label}</span>
               <span
                 className={`grid h-5 w-5 place-items-center rounded-full border ${
-                  on ? "border-white bg-white" : "border-ink-300 bg-white"
+                  on ? "border-white bg-white" : "border-border bg-background"
                 }`}
               >
                 {on && (
-                  <span className="block h-2 w-2 rounded-full bg-ink-950" />
+                  <span className="block h-2 w-2 rounded-full bg-primary" />
                 )}
               </span>
             </div>
             {o.sub && (
               <div
                 className={`mt-1 text-sm ${
-                  on ? "text-white/70" : "text-ink-500"
+                  on ? "text-white/70" : "text-muted-foreground"
                 }`}
               >
                 {o.sub}

@@ -41,16 +41,16 @@ export function NewsletterCapture() {
 
   return (
     <section className="mx-auto max-w-5xl px-6 py-16">
-      <div className="rounded-3xl border border-ink-100 bg-white p-8 shadow-card md:p-12">
+      <div className="rounded-3xl border border-border bg-card p-8 shadow-card md:p-12">
         <div className="grid gap-6 md:grid-cols-[1.3fr,1fr] md:items-center md:gap-12">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-brand-500">
+            <div className="text-xs font-semibold uppercase tracking-widest text-primary">
               Not ready for the quiz?
             </div>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-ink-950">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-foreground">
               Get 1 curated AI tool recommendation a week.
             </h2>
-            <p className="mt-3 text-ink-600">
+            <p className="mt-3 text-muted-foreground">
               One tool, one workflow, one way it'll save you time. No spam,
               unsubscribe anytime.
             </p>
@@ -65,7 +65,7 @@ export function NewsletterCapture() {
               placeholder="you@work.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="rounded-full border border-ink-200 bg-white px-5 py-3 text-ink-900 placeholder:text-ink-400 focus:border-ink-950 focus:outline-none"
+              className="rounded-full border border-border bg-input px-5 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
             <button
               type="submit"
@@ -77,7 +77,7 @@ export function NewsletterCapture() {
             {msg && (
               <p
                 className={`text-sm ${
-                  status === "ok" ? "text-ink-700" : "text-red-600"
+                  status === "ok" ? "text-muted-foreground" : "text-red-400"
                 }`}
                 role={status === "err" ? "alert" : undefined}
               >

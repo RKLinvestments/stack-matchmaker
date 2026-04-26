@@ -15,11 +15,11 @@ export default function MethodologyPage() {
       <main>
         <section className="bg-mesh">
           <div className="mx-auto max-w-3xl px-6 pt-14 pb-8">
-            <div className="chip mb-4 !bg-white">Methodology</div>
-            <h1 className="text-4xl font-semibold tracking-tight text-ink-950 md:text-5xl">
+            <div className="chip mb-4">Methodology</div>
+            <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
               How we recommend
             </h1>
-            <p className="mt-3 text-lg text-ink-600">
+            <p className="mt-3 text-lg text-muted-foreground">
               No algorithm magic. No vendor pay-to-play. Here's exactly how we
               decide which tools show up in your stack.
             </p>
@@ -27,7 +27,7 @@ export default function MethodologyPage() {
         </section>
 
         <section className="mx-auto max-w-3xl px-6 pb-20">
-          <div className="space-y-10 text-ink-800">
+          <div className="space-y-10 text-foreground">
             <Block title="Every tool is scored on four things">
               <p>
                 Before a tool ever shows up in a recommendation, we hand-score
@@ -167,7 +167,7 @@ export default function MethodologyPage() {
 function Block({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-2xl font-semibold tracking-tight text-ink-950">
+      <h2 className="text-2xl font-semibold tracking-tight text-foreground">
         {title}
       </h2>
       <div className="mt-3 space-y-3 leading-relaxed">{children}</div>
@@ -177,11 +177,11 @@ function Block({ title, children }: { title: string; children: React.ReactNode }
 
 function ScoreCard({ title, body }: { title: string; body: string }) {
   return (
-    <div className="rounded-2xl border border-ink-100 bg-white p-5">
-      <div className="text-xs font-semibold uppercase tracking-widest text-brand-500">
+    <div className="rounded-2xl border border-border bg-card p-5">
+      <div className="text-xs font-semibold uppercase tracking-widest text-primary">
         {title}
       </div>
-      <p className="mt-2 text-ink-800">{body}</p>
+      <p className="mt-2 text-foreground">{body}</p>
     </div>
   );
 }

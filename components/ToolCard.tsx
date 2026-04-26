@@ -28,22 +28,22 @@ export function ToolCard({ pick, index }: { pick: ScoredTool; index: number }) {
     <div className="card relative overflow-hidden">
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-start gap-4">
-          <div className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-xl bg-ink-950 text-sm font-bold text-white">
+          <div className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-xl bg-primary text-sm font-bold text-white">
             {index + 1}
           </div>
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <h3 className="text-xl font-semibold text-ink-950">{t.name}</h3>
+              <h3 className="text-xl font-semibold text-foreground">{t.name}</h3>
               <span className="chip !text-[11px]">
                 {CATEGORY_LABEL[t.category] ?? t.category}
               </span>
               {pick.isReplacement && (
-                <span className="chip border-brand-200 bg-brand-50 !text-[11px] text-brand-700">
+                <span className="chip !border-primary/40 !bg-primary/10 !text-[11px] !text-primary">
                   Replaces what you have
                 </span>
               )}
             </div>
-            <p className="mt-1 text-ink-600">{t.tagline}</p>
+            <p className="mt-1 text-muted-foreground">{t.tagline}</p>
           </div>
         </div>
         <TrackedLink
@@ -59,19 +59,19 @@ export function ToolCard({ pick, index }: { pick: ScoredTool; index: number }) {
 
       <div className="mt-5 grid gap-5 md:grid-cols-2">
         <div>
-          <div className="text-xs font-semibold uppercase tracking-wider text-ink-500">
+          <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             Use it for
           </div>
-          <p className="mt-1 text-ink-800">{t.killerUseCase}</p>
+          <p className="mt-1 text-foreground">{t.killerUseCase}</p>
         </div>
         <div>
-          <div className="text-xs font-semibold uppercase tracking-wider text-ink-500">
+          <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
             Why we picked it
           </div>
-          <ul className="mt-1 space-y-1 text-ink-800">
+          <ul className="mt-1 space-y-1 text-foreground">
             {pick.reasons.slice(0, 3).map((r, i) => (
               <li key={i} className="flex gap-2">
-                <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-brand-500" />
+                <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-primary" />
                 {r}
               </li>
             ))}
@@ -80,18 +80,18 @@ export function ToolCard({ pick, index }: { pick: ScoredTool; index: number }) {
       </div>
 
       {pick.isReplacement && (
-        <div className="mt-5 rounded-xl border border-brand-100 bg-brand-50/60 px-4 py-3 text-sm text-brand-900">
+        <div className="mt-5 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3 text-sm text-foreground">
           <strong>Replace your current tool:</strong> {pick.isReplacement.why}
         </div>
       )}
 
       {t.alternatives.length > 0 && (
-        <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-500 no-print">
+        <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-muted-foreground no-print">
           <span>Alternatives:</span>
-          <span className="text-ink-700">{t.alternatives.join(", ")}</span>
+          <span className="text-foreground">{t.alternatives.join(", ")}</span>
           <Link
             href={`/compare?ids=${compareIds}`}
-            className="ml-auto rounded-full border border-ink-200 px-3 py-1 font-medium text-ink-700 hover:border-ink-300 hover:bg-ink-50"
+            className="ml-auto rounded-full border border-border px-3 py-1 font-medium text-foreground hover:border-primary/50 hover:bg-muted"
           >
             Compare side-by-side →
           </Link>

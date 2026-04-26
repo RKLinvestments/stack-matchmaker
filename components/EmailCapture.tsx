@@ -33,11 +33,11 @@ export function EmailCapture({ stackId }: { stackId: string }) {
   }
 
   return (
-    <div className="card bg-ink-950 text-white">
+    <div className="card bg-secondary text-foreground">
       <div className="grid gap-6 md:grid-cols-[1fr,auto] md:items-center">
         <div>
           <div className="text-xl font-semibold">Email me my full plan</div>
-          <p className="mt-1 text-ink-200">
+          <p className="mt-1 text-muted-foreground">
             Your stack + a 7-day setup checklist for each tool. One email, no spam.
           </p>
         </div>
@@ -47,12 +47,12 @@ export function EmailCapture({ stackId }: { stackId: string }) {
             placeholder="you@work.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-full bg-white/10 px-5 py-3 text-white placeholder:text-ink-300 focus:bg-white/15 focus:outline-none md:w-72"
+            className="w-full rounded-full border border-border bg-input px-5 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring md:w-72"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="rounded-full bg-brand-500 px-5 py-3 font-medium text-white hover:bg-brand-600 disabled:opacity-50"
+            className="rounded-full bg-primary px-5 py-3 font-medium text-white hover:bg-primary/90 disabled:opacity-50"
           >
             {status === "loading" ? "Sending…" : "Email my plan →"}
           </button>
@@ -61,7 +61,7 @@ export function EmailCapture({ stackId }: { stackId: string }) {
       {msg && (
         <div
           className={`mt-3 text-sm ${
-            status === "ok" ? "text-brand-200" : "text-red-300"
+            status === "ok" ? "text-primary" : "text-red-300"
           }`}
         >
           {msg}

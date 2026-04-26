@@ -96,14 +96,14 @@ export default function Home() {
       <main>
         <section className="bg-mesh">
           <div className="mx-auto max-w-6xl px-6 pt-20 pb-24 text-center">
-            <div className="chip mx-auto mb-6 !bg-white">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
+            <div className="chip mx-auto mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Personalized AI stack in 2 minutes
             </div>
-            <h1 className="mx-auto max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight text-ink-950 md:text-6xl">
+            <h1 className="mx-auto max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl">
               Stop wasting money on random AI subscriptions.
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-600">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
               Answer a few questions and get a curated AI stack — the right tools, in the right order, for your role, goals, and budget.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 md:flex-row">
@@ -114,7 +114,7 @@ export default function Home() {
                 How it works
               </Link>
             </div>
-            <div className="mt-8 flex items-center justify-center gap-6 text-xs text-ink-500">
+            <div className="mt-8 flex items-center justify-center gap-6 text-xs text-muted-foreground">
               <span>✓ Free</span>
               <span>✓ No signup to start</span>
               <span>✓ Curated, not algorithmic spam</span>
@@ -142,24 +142,24 @@ export default function Home() {
               },
             ].map((b) => (
               <div key={b.step} className="card">
-                <div className="text-xs font-semibold tracking-widest text-brand-500">
+                <div className="text-xs font-semibold tracking-widest text-primary">
                   {b.step}
                 </div>
-                <div className="mt-3 text-xl font-semibold text-ink-900">
+                <div className="mt-3 text-xl font-semibold text-foreground">
                   {b.title}
                 </div>
-                <p className="mt-2 text-ink-600">{b.body}</p>
+                <p className="mt-2 text-muted-foreground">{b.body}</p>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="who" className="bg-white">
+        <section id="who" className="bg-card">
           <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="text-3xl font-semibold tracking-tight text-ink-950">
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground">
               Built for people who actually have to ship
             </h2>
-            <p className="mt-3 max-w-2xl text-ink-600">
+            <p className="mt-3 max-w-2xl text-muted-foreground">
               We don't recommend 50 tools. We recommend the 4–6 that fit you, and we tell you why.
             </p>
             <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -172,7 +172,7 @@ export default function Home() {
                 "Agencies productizing AI for clients without reinventing the wheel",
               ].map((line) => (
                 <div key={line} className="card">
-                  <p className="text-ink-700">{line}</p>
+                  <p className="text-muted-foreground">{line}</p>
                 </div>
               ))}
             </div>
@@ -186,11 +186,11 @@ export default function Home() {
 
         <section id="faq" className="mx-auto max-w-3xl px-6 py-20">
           <div className="text-center">
-            <div className="chip mx-auto mb-4 !bg-white">FAQ</div>
-            <h2 className="text-3xl font-semibold tracking-tight text-ink-950">
+            <div className="chip mx-auto mb-4">FAQ</div>
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground">
               Questions people ask before the quiz
             </h2>
-            <p className="mt-3 text-ink-600">
+            <p className="mt-3 text-muted-foreground">
               If we missed yours,{" "}
               <a
                 href="mailto:aaron@gatorcapitalpartners.com"
@@ -205,15 +205,15 @@ export default function Home() {
             {FAQS.map((f) => (
               <details
                 key={f.q}
-                className="group rounded-2xl border border-ink-100 bg-white p-5 open:shadow-card"
+                className="group rounded-2xl border border-border bg-card p-5 open:shadow-card"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink-950">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-foreground">
                   {f.q}
-                  <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-ink-200 text-ink-500 transition group-open:rotate-45 group-open:border-ink-950 group-open:text-ink-950">
+                  <span className="grid h-6 w-6 flex-shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition group-open:rotate-45 group-open:border-primary group-open:text-primary">
                     +
                   </span>
                 </summary>
-                <div className="mt-3 text-ink-700">{f.a}</div>
+                <div className="mt-3 text-muted-foreground">{f.a}</div>
               </details>
             ))}
           </div>
